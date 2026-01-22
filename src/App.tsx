@@ -32,7 +32,7 @@ function App() {
     <div className="flex bg-blue-100 h-screen justify-center  items-center">
 
 
-      <div className="flex flex-col w-1/3 h-1/2   rounded-2xl m-2 border-2 border-neutral-500">
+      <div className="flex flex-col md:w-2/3 md:h-3/5 w-full h-3/5 lg:w-1/2 xl:w-1/3   rounded-2xl m-2 border-2 border-neutral-500">
         <header className="w-full h-1/8 p-1">
           <nav className="flex p-2 h-full items-center justify-between ">
               <div className="text-center font-bold text-nuetral-500 text-neutral-800">
@@ -41,9 +41,13 @@ function App() {
           
             <div className="flex flex-row gap-2 h-full items-center">
               <button className="bg-green-400 rounded-full text-center p-2 max-w-1/3 border border-neutral-500" >  </button>
-              <button className="bg-yellow-200 rounded-full text-center p-2 max-w-1/3 border border-neutral-500 "> </button>
+              <button className="bg-yellow-200 rounded-full text-center p-2 max-w-1/3 border border-neutral-500 " onClick={() => {
+                window.location.reload()
+              }}> </button>
               
-              <button className="bg-red-500 rounded-full text-center p-2 max-w-1/3 border border-neutral-500"> </button>
+              <button className="bg-red-500 rounded-full text-center p-2 max-w-1/3 border border-neutral-500" onClick={() => {
+                window.close()
+              }}> </button>
             </div>
           </nav>
         </header>
@@ -54,12 +58,12 @@ function App() {
               {   
                   !allowLocation ?
                   <div className="flex flex-row justify-center self-center items-center   h-full w-full">
-                    <button className="border-neutral-400 p-1 bg-neutral-200 rounded-xl text-yellow-400 font-bold " onClick={fetchWeather}>Allow Location</button>
+                    <button className="border-neutral-400 p-1 bg-neutral-200 rounded-xl text-[#FFFF00] text-xl " onClick={fetchWeather}>Allow Location</button>
                   </div>
                   : 
                   isLoading ? 
-                  <div className="flex flex-col justify-center self-center items-center   h-full w-full">
-                    <DotLoader />
+                  <div className="flex flex-col justify-center self-center items-center text-yellow-300  h-full w-full">
+                    <DotLoader color="yellow" />
                     <h2>Fetching Data</h2>
                   </div> : weatherData &&          
                   <WeatherData data={weatherData} ></WeatherData>

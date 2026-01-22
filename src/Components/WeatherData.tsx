@@ -24,15 +24,23 @@ export default function WeatherData(props: weatherDataProps ){
 
 
     return (
-        <div style={{color: val}} className=" font-bold text-lg md:text-xl flex flex-col items-start self-start justify-start gap-2 w-full h-full">
+        <div style={{color: val}} className=" font-bold text-lg sm:text-xl md:text-xl  flex flex-col items-start justify-between  w-full h-full">
 
-            <h1 className="text-2xl">Today it is {props.data.todayForecast.forecast}</h1>
-            <h2 className="mb-6">Humidity {props.data.todayForecast.humidity}%</h2>
+            <div >
+                    <h1>Today it is {props.data.todayForecast.forecast}</h1>
+                    <h2>Humidity: {props.data.todayForecast.humidity}%</h2>
+            </div>
+          
 
-            <div className="self-center text-4xl justify-center m-10">{props.data.todayForecast.temp}&deg;F</div>
+            <div className="self-center text-4xl justify-center">{props.data.todayForecast.temp}&deg;F</div>
 
-            <h2 className="mt-6">Tomorrow's forecast: {props.data.tomorrowForecast.forecast} with a high of {props.data.tomorrowForecast.temp}&deg;F</h2>
-            <h2>Recommendation: {fullRec(props.data.tomorrowForecast.forecast,props.data.todayForecast.temp )}</h2>    
+            <div >
+                <h2 >Tomorrow's forecast: {props.data.tomorrowForecast.forecast} with a high of {props.data.tomorrowForecast.temp}&deg;F</h2>
+                <h2>Recommendation: {fullRec(props.data.tomorrowForecast.forecast,props.data.todayForecast.temp )}</h2>    
+
+            </div>
+
+         
         </div>
 
 
