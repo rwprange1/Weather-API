@@ -13,16 +13,16 @@ export async function getWeatherData(long: number, lat: number){
             
             let dict =
             {
-                "forcast" : response.data.properties.forecast,
+                "forecast" : response.data.properties.forecast,
                 "county": response.data.properties.county,
                 "grid": response.data.properties.forecastGridData
 
             };
             console.log(JSON.stringify(dict));
             let location: location = await getLocation(dict.county);
-            let weatherInfo: weatherData = await getWeatherInfo(dict.forcast, dict.grid);
+            let weatherInfo: weatherData = await getWeatherInfo(dict.forecast, dict.grid);
             
-            weatherInfo.todayForcast.location = location;
+            weatherInfo.todayForecast.location = location;
             console.log(JSON.stringify(weatherInfo));
             return weatherInfo;
         }
@@ -58,26 +58,26 @@ async function getWeatherInfo(forecast:string, grid: string): Promise<weatherDat
 
     
     try {
-       let forcastData =  await axios.get(forecast);
+       let forecastData =  await axios.get(forecast);
        let gridData =  await axios.get(grid);
 
         let todayLog: weatherLog = {
-            forcast: forcastData.data.properties.periods[0].shortForecast,
-            temp: forcastData.data.properties.periods[0].temperature,
+            forecast: forecastData.data.properties.periods[0].shortForecast,
+            temp: forecastData.data.properties.periods[0].temperature,
             location: {state: "", county: ""},
             humidity: gridData.data.properties.relativeHumidity.values[0].value
         };
 
           let tomorrowLog: weatherLog = {
-            forcast: forcastData.data.properties.periods[1].shortForecast,
-            temp: forcastData.data.properties.periods[1].temperature,
+            forecast: forecastData.data.properties.periods[1].shortForecast,
+            temp: forecastData.data.properties.periods[1].temperature,
             location: {state: "", county: ""},
             humidity:  0
         };
 
         return {
-            todayForcast: todayLog,
-            tomorrowForcast: tomorrowLog
+            todayForecast: todayLog,
+            tomorrowForecast: tomorrowLog
         }
         
 

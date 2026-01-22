@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { getWeatherData } from "./api";
 import type { weatherData } from "./global";
 import { DotLoader } from "react-spinners";
@@ -97,16 +97,17 @@ function App() {
       navigator.geolocation.getCurrentPosition((pos) => {
         
         
-        getWeatherData(pos.coords.longitude, pos.coords.latitude)
-        .then((data:weatherData) => {
+        getWeatherData(pos.coords.longitude, pos.coords.latitude).then((data:weatherData) => {
           setWeatherData(data);
           if (bg.current){
             let val = 0;
-            if (data.todayForcast.forcast.includes("sunny")){
+            data.todayForecast.forecast = "sunny";
+            
+            if (data.todayForecast.forecast.includes("sunny")){
               val =2
-            } else if (data.todayForcast.forcast.includes("cloudy")){
+            } else if (data.todayForecast.forecast.includes("cloudy")){
                val = 1;
-            }else if (data.todayForcast.forcast.includes("rainy")){
+            }else if (data.todayForecast.forecast.includes("rainy")){
               val = 3;
             }
             bg.current.style.backgroundImage = `url('${map.get(val)}')`

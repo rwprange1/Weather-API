@@ -6,12 +6,12 @@ export interface location {
 
 export interface weatherLog{
   temp: number;
-  forcast: string;
+  forecast: string;
   humidity: number
   location: location;
 }
 
 export interface weatherData {
-  todayForcast: weatherLog;
-  tomorrowForcast: weatherLog;
+  todayForecast: weatherLog;
+  tomorrowForecast: weatherLog;
 }
