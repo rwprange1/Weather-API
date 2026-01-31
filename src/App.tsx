@@ -67,15 +67,7 @@ function App() {
                     <h2>Fetching Data</h2>
                   </div> : weatherData &&          
                   <WeatherData data={weatherData} ></WeatherData>
-              }
-
-
-              
-              
-              
-             
-
-        
+              }   
         </div>
 
       </div>
@@ -105,7 +97,6 @@ function App() {
           setWeatherData(data);
           if (bg.current){
             let val = 0;
-            data.todayForecast.forecast = "sunny";
             
             if (data.todayForecast.forecast.includes("sunny")){
               val =2

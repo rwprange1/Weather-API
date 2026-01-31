@@ -24,7 +24,7 @@ export default function WeatherData(props: weatherDataProps ){
 
 
     return (
-        <div style={{color: val}} className=" font-bold text-lg sm:text-xl md:text-xl  flex flex-col items-start justify-between  w-full h-full">
+        <div style={{color: val}} className=" font-bold text-lg sm:text-xl md:text-2xl  flex flex-col items-start justify-between  w-full h-full">
 
             <div >
                     <h1>Today it is {props.data.todayForecast.forecast}</h1>
